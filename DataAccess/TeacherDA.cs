@@ -9,53 +9,61 @@ using ObjectsGettersSetters;
 
 namespace DataAccess
 {
-    public class StudentDA
+    public class TeacherDA
     {
+        
 
-        private const string DataRepositoryFolder = "data\\students\\"; // Folder Location
+        private const string DataRepositoryFolder = "data\\teachers\\"; // Folder Location
         private const string FileExtention = ".bin"; // File Extention (Bianry File)
 
-        private static void PrepareRepository() {
+        private static void PrepareRepository()
+        {
 
             // Check if the folder exists
-            if (!Directory.Exists(DataRepositoryFolder)) {
+            if (!Directory.Exists(DataRepositoryFolder))
+            {
 
                 Directory.CreateDirectory(DataRepositoryFolder); // If it doesn't exist it will create the folder
                 Console.WriteLine("Data Repository Created"); // Message to the user
             }
         }
 
-        private static string GetRepositoryFilePath(string idCardNo) { 
-        
+        private static string GetRepositoryFilePath(string idCardNo)
+        {
+
             PrepareRepository(); // Call the PrepareRepository Method
             string targetPath = string.Format(DataRepositoryFolder, "{0}" + FileExtention + idCardNo);
             return targetPath;
         }
 
-        public static bool Save(Student student)
+        public static bool Save(Teacher teacher)
         {
             BinaryFormatter myBinaryFormatter = new BinaryFormatter();
-            string targetPath = GetRepositoryFilePath(student.IdCard);
+            string targetPath = GetRepositoryFilePath(teacher.IdCard);
 
-            using (StreamWriter myStreamWriter = new StreamWriter(targetPath, false, Encoding.UTF8)) { // using is like break
+            using (StreamWriter myStreamWriter = new StreamWriter(targetPath, false, Encoding.UTF8))
+            { // using is like break
 
-                myBinaryFormatter.Serialize(myStreamWriter.BaseStream, student);
-                
+                myBinaryFormatter.Serialize(myStreamWriter.BaseStream, teacher);
+
             }
             return true;
         }
 
-        public static Student Load(string idCardNo) { 
-            
-            string targetPath = GetRepositoryFilePath(idCardNo);
-            { 
+        public static Teacher Load(string idCardNo)
+        {
 
-                if (File.Exists(targetPath)) {
+            string targetPath = GetRepositoryFilePath(idCardNo);
+            {
+
+                if (File.Exists(targetPath))
+                {
 
                     BinaryFormatter myBinaryFormatter = new BinaryFormatter();
-                    using (StreamReader myStream = new StreamReader(targetPath)) {
+                    using (StreamReader myStream = new StreamReader(targetPath))
+                    {
 
-                        return myBinaryFormatter.Deserialize(myStream.BaseStream) as Student;
+                        return myBinaryFormatter.Deserialize(myStream.BaseStream) as Teacher;
                     }
                 }
                 return null; // Nothing will be returned
@@ -63,12 +71,14 @@ namespace DataAccess
             }
         }
 
-        public static List<Student> Load() { 
-            
-            List<Student> myList = new List<Student>();
+        public static List<Teacher> Load()
+        {
+
+            List<Teacher> myList = new List<Teacher>();
             string targetPath = DataRepositoryFolder;
-            if (Directory.Exists(targetPath)) { 
-            
+            if (Directory.Exists(targetPath))
+            {
+
                 DirectoryInfo myDirecoryInfo = new DirectoryInfo(targetPath);
                 FileInfo[] files = myDirecoryInfo.GetFiles("*" + FileExtention); // Anything  + .bin
 
@@ -77,9 +87,10 @@ namespace DataAccess
                 {
 
                     string path = file.FullName;
-                    using (StreamReader myStream = new StreamReader(path)) {
+                    using (StreamReader myStream = new StreamReader(path))
+                    {
 
-                        myList.Add(myBinaryformatter.Deserialize(myStream.BaseStream) as Student);
+                        myList.Add(myBinaryformatter.Deserialize(myStream.BaseStream) as Teacher);
 
 
                     }

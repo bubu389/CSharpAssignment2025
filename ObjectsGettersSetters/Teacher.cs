@@ -10,7 +10,7 @@ namespace ObjectsGettersSetters
     public class Teacher : Person
     {
         // Private Attributes
-        private string t_Subject, t_Class;
+        private string t_Subject, t_Class, t_Address;
         private float t_Salary;
 
         // Default Constructor
@@ -44,6 +44,12 @@ namespace ObjectsGettersSetters
         {
             get { return t_Salary; }
             set { this.t_Salary = value; }
+        }
+
+        public string Address
+        {
+            get { return t_Address; }
+            set { this.t_Address = value; }
         }
 
 
