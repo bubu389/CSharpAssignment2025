@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.erpProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.erpProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -138,6 +141,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(225, 20);
             this.txtName.TabIndex = 8;
+            this.txtName.Leave += new System.EventHandler(this.txtName_Leave);
             // 
             // txtAddress
             // 
@@ -145,6 +149,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(590, 20);
             this.txtAddress.TabIndex = 9;
+            this.txtAddress.Leave += new System.EventHandler(this.txtAddress_Leave);
             // 
             // txtSubject
             // 
@@ -159,6 +164,7 @@
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(225, 20);
             this.txtSurname.TabIndex = 12;
+            this.txtSurname.Leave += new System.EventHandler(this.txtSurname_Leave);
             // 
             // txtIdCard
             // 
@@ -166,6 +172,7 @@
             this.txtIdCard.Name = "txtIdCard";
             this.txtIdCard.Size = new System.Drawing.Size(225, 20);
             this.txtIdCard.TabIndex = 13;
+            this.txtIdCard.Leave += new System.EventHandler(this.txtIdCard_Leave);
             // 
             // txtClassName
             // 
@@ -207,6 +214,7 @@
             this.txtContactNumber.Name = "txtContactNumber";
             this.txtContactNumber.Size = new System.Drawing.Size(225, 20);
             this.txtContactNumber.TabIndex = 18;
+            this.txtContactNumber.Leave += new System.EventHandler(this.txtContactNumber_Leave);
             // 
             // btnCreate
             // 
@@ -216,6 +224,7 @@
             this.btnCreate.TabIndex = 19;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnClear
             // 
@@ -235,6 +244,7 @@
             this.btnEdit.TabIndex = 21;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnSearch
             // 
@@ -244,6 +254,11 @@
             this.btnSearch.TabIndex = 22;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // erpProvider
+            // 
+            this.erpProvider.ContainerControl = this;
             // 
             // frmTeacher
             // 
@@ -275,6 +290,7 @@
             this.Name = "frmTeacher";
             this.Text = "Teacher Window";
             this.Load += new System.EventHandler(this.frmTeacher_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.erpProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,6 +320,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ErrorProvider erpProvider;
     }
 }
 

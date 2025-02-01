@@ -33,7 +33,7 @@ namespace DataAccess
 
             PrepareRepository(); // Call the PrepareRepository Method
             string targetPath = string.Format(DataRepositoryFolder, "{0}" + FileExtention + idCardNo);
-            return targetPath;
+            return Path.Combine(DataRepositoryFolder, idCardNo + FileExtention);
         }
 
         public static bool Save(Teacher teacher)
